@@ -1,0 +1,432 @@
+{% extends 'basic.html' %}
+{% block title %}Product Detail - Odore{% endblock %}
+
+
+{% block body %}
+{% include 'messages.html' %}
+{% load static %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta property="og:title" content="Vide" />
+<meta name="keywords" content="Big store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href=" {% static 'css/bootstrap.css' %} " rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href=" {% static 'css/style.css' %} " rel='stylesheet' type='text/css' />
+<!-- js -->
+   <script src=" {% static 'js/jquery-1.11.1.min.js' %} "></script>
+<!-- //js -->
+<!-- start-smoth-scrolling -->
+<script type="text/javascript" src=" {% static 'js/move-top.js' %} "></script>
+<script type="text/javascript" src=" {% static 'js/easing.js' %} "></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<link href=" {% static 'css/font-awesome.css' %} " rel="stylesheet">
+<link href=' {% static '//fonts.googleapis.com/css?family=Montserrat:400,700' %} ' rel='stylesheet' type='text/css'>
+<link href=' {% static '//fonts.googleapis.com/css?family=Noto+Sans:400,700' %} ' rel='stylesheet' type='text/css'>
+<!--- start-rate---->
+<script src=" {% static 'js/jstarbox.js' %} "></script>
+	<link rel="stylesheet" href=" {% static 'css/jstarbox.css' %} " type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					}
+				})
+			});
+		});
+		</script>
+<!---//End-rate---->
+
+
+
+
+  <!---->
+ <!--banner-->
+<div class="banner-top">
+	<div class="container">
+		<h3 >Shop</h3>
+		<h4><a href="/">Home</a><label>/</label>Product Detail</h4>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<div class="single">
+			<div class="container">
+						<div class="single-top-main">
+	   		<div class="col-md-5 single-top">
+	   		<div class="single-w3agile">
+<form action="/addtocart" method="post" id="contactf">
+{% csrf_token %}
+
+<div id="picture-frame">
+			<img src="/media/{{productdetails.Pro_image}}" alt="" class="img-responsive"/>
+		</div>
+										<script src=" {% static 'js/jquery.zoomtoo.js' %} "></script>
+								<script>
+			$(function() {
+				$("#picture-frame").zoomToo({
+					magnify: 1
+				});
+			});
+		</script>
+
+
+
+			</div>
+			</div>
+			<div class="col-md-7 single-top-left ">
+								<div class="single-right">
+				<h3>{{productdetails.Pro_name}}</h3>
+
+
+				 <div class="pr-single">
+				  <p class="reduced ">₹{{productdetails.Pro_price}}</p>
+				</div>
+
+
+							<strong>Category:</strong>
+							<span>
+								{{productdetails.Pro_Cat.Product_category_name}}
+							</span>
+
+
+				<p class="in-pa">{{productdetails.Pro_description}}</p>
+
+				<div class="row">
+                <span class="input-group-prepend col-sm-1">
+                    <button type="button" class="btn btn-outline-secondary btn-number" data-type="minus" data-field="quant[1]">
+                        <span class="fa fa-minus"></span>
+                    </button>
+                </span>
+					<span class="input-group-append col-sm-2">
+                <input type="text" name="quant[1]" class="btn btn-outline-secondary form-control input-number" value="0" min="1" max="10">
+					</span>
+						<span class="input-group-append col-sm-1">
+                    <button type="button" class="btn btn-outline-secondary btn-number" data-type="plus" data-field="quant[1]">
+                        <span class="fa fa-plus"></span>
+                    </button>
+                </span>
+
+				</div>
+
+					<fieldset>
+						<input type="hidden" name="pid" value="{{productdetails.id}}" />
+						<input type="hidden" name="pname" value="{{productdetails.Pro_name}}" />
+						<input type="hidden" name="amount" value="{{productdetails.Pro_price}}" />
+					</fieldset>
+
+					<div class="add add-3">
+					   <button class="btn btn-danger my-cart-btn my-cart-b" type="submit">Add to Cart</button>
+					</div>
+</form>
+
+
+
+
+			<div class="clearfix"> </div>
+			</div>
+
+
+			</div>
+		   <div class="clearfix"> </div>
+	   </div>
+
+
+	</div>
+</div>
+
+<script type="text/javascript">
+		$(document).ready(function() {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<!-- plus minus-js -->
+	<script>
+$('.btn-number').click(function(e){
+    e.preventDefault();
+
+    fieldName = $(this).attr('data-field');
+    type      = $(this).attr('data-type');
+    var input = $("input[name='"+fieldName+"']");
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+        if(type == 'minus') {
+
+            if(currentVal > input.attr('min')) {
+                input.val(currentVal - 1).change();
+            }
+<!--            if(parseInt(input.val()) == input.attr('min')) {-->
+<!--                $(this).attr('disabled', true);-->
+<!--            }-->
+
+        } else if(type == 'plus') {
+
+            if(currentVal < input.attr('max')) {
+                input.val(currentVal + 1).change();
+            }
+<!--            if(parseInt(input.val()) == input.attr('max')) {-->
+<!--                $(this).attr('disabled', true);-->
+<!--            }-->
+
+        }
+    } else {
+        input.val(0);
+    }
+});
+$('.input-number').focusin(function(){
+   $(this).data('oldValue', $(this).val());
+});
+$('.input-number').change(function() {
+
+    minValue =  parseInt($(this).attr('min'));
+    maxValue =  parseInt($(this).attr('max'));
+    valueCurrent = parseInt($(this).val());
+
+    name = $(this).attr('name');
+    if(valueCurrent >= minValue) {
+        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the minimum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+    if(valueCurrent <= maxValue) {
+        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the maximum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+});
+
+$(".input-number").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+         // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+         // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+             // let it happen, don't do anything
+             return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+
+</script>
+<!-- for bootstrap working -->
+		<script src=" {% static 'js/bootstrap.js' %} "></script>
+<!-- //for bootstrap working -->
+<script type='text/javascript' src=" {% static 'js/jquery.mycart.js' %} "></script>
+  <script type="text/javascript">
+  $(function () {
+
+    var goToCartIcon = function($addTocartBtn){
+      var $cartIcon = $(".my-cart-icon");
+      var $image = $('<img width="30px" height="30px" src=" {% static '' + $addTocartBtn.data(' %} "image") + '"/>').css({"position": "fixed", "z-index": "999"});
+      $addTocartBtn.prepend($image);
+      var position = $cartIcon.position();
+      $image.animate({
+        top: position.top,
+        left: position.left
+      }, 500 , "linear", function() {
+        $image.remove();
+      });
+    }
+
+    $('.my-cart-btn').myCart({
+      classCartIcon: 'my-cart-icon',
+      classCartBadge: 'my-cart-badge',
+      affixCartIcon: true,
+      checkoutCart: function(products) {
+        $.each(products, function(){
+          console.log(this);
+        });
+      },
+      clickOnAddToCart: function($addTocart){
+        goToCartIcon($addTocart);
+      },
+      getDiscountPrice: function(products) {
+        var total = 0;
+        $.each(products, function(){
+          total += this.quantity * this.price;
+        });
+        return total * 1;
+      }
+    });
+
+  });
+  </script>
+</body>
+{% endblock %}
+
+{% block js %}
+<!-- smooth scrolling -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+		/*
+			var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+			};
+		*/
+		$().UItoTop({ easingType: 'easeOutQuart' });
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<!-- plus minus-js -->
+	<script>
+$('.btn-number').click(function(e){
+    e.preventDefault();
+
+    fieldName = $(this).attr('data-field');
+    type      = $(this).attr('data-type');
+    var input = $("input[name='"+fieldName+"']");
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+        if(type == 'minus') {
+
+            if(currentVal > input.attr('min')) {
+                input.val(currentVal - 1).change();
+            }
+<!--            if(parseInt(input.val()) == input.attr('min')) {-->
+<!--                $(this).attr('disabled', true);-->
+<!--            }-->
+
+        } else if(type == 'plus') {
+
+            if(currentVal < input.attr('max')) {
+                input.val(currentVal + 1).change();
+            }
+<!--            if(parseInt(input.val()) == input.attr('max')) {-->
+<!--                $(this).attr('disabled', true);-->
+<!--            }-->
+
+        }
+    } else {
+        input.val(0);
+    }
+});
+$('.input-number').focusin(function(){
+   $(this).data('oldValue', $(this).val());
+});
+$('.input-number').change(function() {
+
+    minValue =  parseInt($(this).attr('min'));
+    maxValue =  parseInt($(this).attr('max'));
+    valueCurrent = parseInt($(this).val());
+
+    name = $(this).attr('name');
+    if(valueCurrent >= minValue) {
+        $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the minimum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+    if(valueCurrent <= maxValue) {
+        $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+    } else {
+        alert('Sorry, the maximum value was reached');
+        $(this).val($(this).data('oldValue'));
+    }
+});
+
+$(".input-number").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+         // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+         // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+             // let it happen, don't do anything
+             return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+});
+
+</script>
+<!-- for bootstrap working -->
+		<script src=" {% static 'js/bootstrap.js' %} "></script>
+<!-- //for bootstrap working -->
+<script type='text/javascript' src=" {% static 'js/jquery.mycart.js' %} "></script>
+  <script type="text/javascript">
+  $(function () {
+
+    var goToCartIcon = function($addTocartBtn){
+      var $cartIcon = $(".my-cart-icon");
+      var $image = $('<img width="30px" height="30px" src=" {% static '' + $addTocartBtn.data(' %} "image") + '"/>').css({"position": "fixed", "z-index": "999"});
+      $addTocartBtn.prepend($image);
+      var position = $cartIcon.position();
+      $image.animate({
+        top: position.top,
+        left: position.left
+      }, 500 , "linear", function() {
+        $image.remove();
+      });
+    }
+
+    $('.my-cart-btn').myCart({
+      classCartIcon: 'my-cart-icon',
+      classCartBadge: 'my-cart-badge',
+      affixCartIcon: true,
+      checkoutCart: function(products) {
+        $.each(products, function(){
+          console.log(this);
+        });
+      },
+      clickOnAddToCart: function($addTocart){
+        goToCartIcon($addTocart);
+      },
+      getDiscountPrice: function(products) {
+        var total = 0;
+        $.each(products, function(){
+          total += this.quantity * this.price;
+        });
+        return total * 1;
+      }
+    });
+
+  });
+  </script>
+{% endblock %}
+
+
+
